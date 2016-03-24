@@ -23,6 +23,8 @@ class Survey::Survey < ActiveRecord::Base
   validates :attempts_number, :numericality => { :only_integer => true, :greater_than => -1 }
   validates :description, :name, :presence => true, :allow_blank => false
   validate  :check_active_requirements
+  
+  translates :name, :description, :fallbacks_for_empty_translations => true if Survey.localizable?
 
   # returns all the correct options for current surveys
   def correct_options

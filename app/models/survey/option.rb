@@ -3,6 +3,8 @@ class Survey::Option < ActiveRecord::Base
   self.table_name = "survey_options"
 
   acceptable_attributes :text, :correct, :weight
+  
+  translates :text, :fallbacks_for_empty_translations => true if Survey.localizable?
 
   #relations
   belongs_to :question
