@@ -5,7 +5,7 @@ class Survey::Option < ActiveRecord::Base
   acceptable_attributes :text, :correct, :weight
   
   translates :text, :fallbacks_for_empty_translations => true if Survey.localizable?
-
+  accepts_nested_attributes_for :translations, allow_destroy: true if Survey.localizable?
   #relations
   belongs_to :question
 

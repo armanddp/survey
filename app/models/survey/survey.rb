@@ -25,6 +25,7 @@ class Survey::Survey < ActiveRecord::Base
   validate  :check_active_requirements
   
   translates :name, :description, :fallbacks_for_empty_translations => true if Survey.localizable?
+  accepts_nested_attributes_for :translations, allow_destroy: true if Survey.localizable?
 
   # returns all the correct options for current surveys
   def correct_options
